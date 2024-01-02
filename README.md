@@ -4,6 +4,12 @@
 
 ## Start app
 
+- Install `cargo-watch`:
+
+```
+cargo install cargo-watch
+```
+
 - Use command:
 
 ```
