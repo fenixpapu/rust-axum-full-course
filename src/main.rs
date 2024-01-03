@@ -2,7 +2,7 @@
 
 use std::net::SocketAddr;
 
-use axum::extract::Query;
+use axum::extract::{Path, Query};
 use axum::response::{Html, IntoResponse};
 use axum::routing::get;
 use axum::Router;
@@ -37,5 +37,10 @@ async fn handler_hello(Query(params): Query<HelloParams>) -> impl IntoResponse {
 
     let name = params.name.as_deref().unwrap_or("World!");
     Html(format!("Hello <strong> {name} </strong>"))
+}
+
+async fn handler_hello2(Path(name): Path<String>) -> impl IntoResponse {
+    println!("->> {:<12} - handler_hello2 - {name:?}", "HANDLER");
+    Html(format!("Hello2 <strong>{name}</strong>"))
 }
 // endregion: -- Handler Hello
